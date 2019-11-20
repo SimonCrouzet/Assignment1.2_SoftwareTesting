@@ -28,7 +28,7 @@ class GameTest {
     @Test
     void getWinnerReturnPlayer1IfWinning() {
         Player mock = mock(Player.class);
-        when(Player.getScore()).thenReturn(SUT.getWinningScoreLimit());
+        when(mock.getScore()).thenReturn(SUT.getWinningScoreLimit());
         SUT.setPlayer1(mock);
         assertEquals(SUT.getPlayer1(), SUT.getWinner());
     }
