@@ -7,4 +7,7 @@ public class Player {
         score = 0;
     }
 
+    public int getScore() {
+        return score;
+    }
 }
