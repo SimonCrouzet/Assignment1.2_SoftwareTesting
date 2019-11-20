@@ -15,6 +15,6 @@ class PlayGameTest {
 
     @Test
     void startTest() {
-        assertTrue("start() should return true", SUT.start());
+        assertTrue(SUT.start(), "start() should return true");
     }
 }
