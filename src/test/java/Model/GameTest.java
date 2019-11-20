@@ -34,7 +34,7 @@ class GameTest {
     }
 
     @Test
-    void figthShouldReturnAWinner () {
+    void fightShouldReturnAWinner () {
         Player actual = SUT.fight();
         boolean isOneOfThePlayers = (actual.equals( SUT.getPlayer1() ) || actual.equals(SUT.getPlayer2()));
 
