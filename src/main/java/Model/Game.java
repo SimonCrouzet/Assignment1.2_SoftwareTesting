@@ -43,7 +43,14 @@ public class Game {
     }
 
     public Player fight() {
-        return player1;
+        if (player2.getCurrentFighter()==null)
+            return player1;
+        else if (player1.getCurrentFighter()==null)
+            return player2;
+        else if (player1.getScore()>player2.getScore())
+            return player1;
+        else
+            return player2;
     }
 
 }
