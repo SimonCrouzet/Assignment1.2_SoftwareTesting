@@ -3,6 +3,7 @@ package Model;
 public class Game {
     private Player player1;
     private Player player2;
+    private int winningScoreLimit = 3;
 
     public Game() {
         player1 = new Player();
@@ -16,4 +17,5 @@ public class Game {
     public Player getPlayer2() {
         return player2;
     }
+
 }
