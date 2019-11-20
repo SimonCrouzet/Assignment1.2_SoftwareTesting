@@ -58,6 +58,9 @@ class GameTest {
         when(player1.getCurrentFighter()).thenReturn( fighter1 );
         when(player2.getCurrentFighter()).thenReturn( fighter2 );
 
+        SUT.setPlayer1(player1);
+        SUT.setPlayer2(player2);
+
         Player actual = SUT.fight();
 
         assertEquals(actual, player1);
