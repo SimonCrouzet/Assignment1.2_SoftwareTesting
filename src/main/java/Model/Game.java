@@ -43,10 +43,11 @@ public class Game {
     }
 
     public Player fight() {
-        if (player2.getCurrentFighter()==null)
+        if (player2.getCurrentFighter()==null || player2.getCurrentFighter().getHealth()<=0)
             return player1;
-        else if (player1.getCurrentFighter()==null)
+        else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getHealth()<=0)
             return player2;
+        
         else if (player1.getCurrentFighter().getAttack()>player2.getCurrentFighter().getAttack())
             return player1;
         else
