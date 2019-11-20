@@ -31,8 +31,17 @@ public class Game {
     }
 
     public Player getWinner() {
-        return player1;
+        if (player1.getScore() >= winningScoreLimit ) {
+            return player1;
+        }
+
+        if (player2.getScore() >= winningScoreLimit ) {
+            return player2;
+        }
+
+        return null;
     }
+
 
 
 }
