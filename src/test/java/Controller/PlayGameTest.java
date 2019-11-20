@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 
 class PlayGameTest {
     private PlayGame SUT;
