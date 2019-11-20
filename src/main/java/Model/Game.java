@@ -42,6 +42,8 @@ public class Game {
         return null;
     }
 
-
+    public Player fight() {
+        return player1;
+    }
 
 }
