@@ -47,7 +47,7 @@ public class Game {
             return player1;
         else if (player1.getCurrentFighter()==null)
             return player2;
-        else if (player1.getScore()>player2.getScore())
+        else if (player1.getCurrentFighter().getAttack()>player2.getCurrentFighter().getAttack())
             return player1;
         else
             return player2;
