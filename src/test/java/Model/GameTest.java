@@ -40,4 +40,29 @@ class GameTest {
 
         assertTrue( isOneOfThePlayers, "The winner of the fight should be one of the game players." );
     }
+
+    @Test
+    void fightReturnStrongerFighter () {
+        Fighter fighter1 = mock(Fighter.class);
+        Fighter fighter2 = mock(Fighter.class);
+
+        when(fighter1.getAttack()).thenReturn(50);
+        when(fighter2.getAttack()).thenReturn(1);
+
+        when(fighter1.getHealth()).thenReturn(100);
+        when(fighter2.getHealth()).thenReturn(10);
+
+        Player player1 = mock(Player.class);
+        Player player2 = mock(Player.class);
+
+        when(player1.getCurrentFighter()).thenReturn( fighter1 );
+        when(player2.getCurrentFighter()).thenReturn( fighter2 );
+
+        Player actual = SUT.fight();
+
+        assertEquals(actual, player1);
+
+    }
+
+
 }
