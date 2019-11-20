@@ -1,6 +1,12 @@
 package Controller;
 
-public class PlayGame {
+import Model.Game;
 
-    public boolean start() { return true;}
+public class PlayGame {
+    private Game game;
+
+    public boolean start() {
+        game = new Game();
+        return true;
+    }
 }
