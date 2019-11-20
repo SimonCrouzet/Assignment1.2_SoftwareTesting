@@ -32,4 +32,12 @@ class GameTest {
         SUT.setPlayer1(mock);
         assertEquals(SUT.getPlayer1(), SUT.getWinner());
     }
+
+    @Test
+    void figthShouldReturnAWinner () {
+        Player actual = SUT.fight();
+        boolean isOneOfThePlayers = (actual.equals( SUT.getPlayer1() ) || actual.equals(SUT.getPlayer2()));
+
+        assertTrue( isOneOfThePlayers, "The winner of the fight should be one of the game players." );
+    }
 }
