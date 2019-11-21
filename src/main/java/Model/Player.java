@@ -10,7 +10,7 @@ public class Player {
     }
 
     public int getPlayerNumber () {
-        return 1;
+        return playerNumber;
     }
 
     public void setPlayerNumber( int number ) {
