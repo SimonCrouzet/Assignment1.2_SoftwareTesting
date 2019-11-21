@@ -45,15 +45,15 @@ public class Game {
     }
 
     public Player fight() {
-        if (player2.getCurrentFighter()==null || player2.getCurrentFighter().getHealth()<=0)
+        if (player2.getCurrentFighter()==null || player2.getCurrentFighter().getOriginalHealth()<=0)
             return player1;
-        else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getHealth()<=0)
+        else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getOriginalHealth()<=0)
             return player2;
 
         Random random = new Random();
 
-        int currentHealth_player1 = player1.getCurrentFighter().getHealth();
-        int currentHealth_player2 = player2.getCurrentFighter().getHealth();
+        int currentHealth_player1 = player1.getCurrentFighter().getOriginalHealth();
+        int currentHealth_player2 = player2.getCurrentFighter().getOriginalHealth();
 
         while (currentHealth_player1 > 0 && currentHealth_player2 > 0 ) {
             boolean turn = random.nextBoolean();
