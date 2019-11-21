@@ -8,6 +8,10 @@ public class Player {
         score = 0;
     }
 
+    public int getPlayerNumber () {
+        return 1;
+    }
+
     public int getScore() {
         return score;
     }
