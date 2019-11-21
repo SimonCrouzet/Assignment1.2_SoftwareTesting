@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Random;
+
 public class Game {
     private Player player1;
     private Player player2;
@@ -48,14 +50,26 @@ public class Game {
         else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getHealth()<=0)
             return player2;
 
+        Random random = new Random();
+
         int currentHealth_player1 = player1.getCurrentFighter().getHealth();
         int currentHealth_player2 = player2.getCurrentFighter().getHealth();
 
         while (currentHealth_player1 > 0 && currentHealth_player2 > 0 ) {
-            currentHealth_player2 -= player1.getCurrentFighter().getAttack();
+            boolean turn = random.nextBoolean();
 
-            if (currentHealth_player2 > 0 )
+            if (turn) { // Fighter1 attack first
+                currentHealth_player2 -= player1.getCurrentFighter().getAttack();
+
+                if (currentHealth_player2 > 0)
+                    currentHealth_player1 -= player2.getCurrentFighter().getAttack();
+            }
+            else { // Fighter2 attack first
                 currentHealth_player1 -= player2.getCurrentFighter().getAttack();
+
+                if (currentHealth_player1 > 0)
+                    currentHealth_player2 -= player1.getCurrentFighter().getAttack();
+            }
         }
 
         if ( currentHealth_player1 <= 0 )
