@@ -56,6 +56,9 @@ public class Game {
     * */
 
     public Player fight() {
+        if (player1.getCurrentFighter()==null && player2.getCurrentFighter()==null)
+            throw new IllegalArgumentException("Both of the players have no fighters !");
+
         if (player2.getCurrentFighter()==null || player2.getCurrentFighter().getOriginalHealth()<=0)
             return player1;
         else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getOriginalHealth()<=0)
@@ -63,27 +66,24 @@ public class Game {
 
         Random random = new Random();
 
-        int currentHealth_player1 = player1.getCurrentFighter().getOriginalHealth();
-        int currentHealth_player2 = player2.getCurrentFighter().getOriginalHealth();
-
-        while (currentHealth_player1 > 0 && currentHealth_player2 > 0 ) {
+        while (player1.getCurrentFighter().isAlive() && player2.getCurrentFighter().isAlive()) {
             boolean turn = random.nextBoolean();
 
             if (turn) { // Fighter1 attack first
-                currentHealth_player2 -= player1.getCurrentFighter().getAttack();
+                player2.getCurrentFighter().takeDamage(player1.getCurrentFighter().getAttack());
 
-                if (currentHealth_player2 > 0)
-                    currentHealth_player1 -= player2.getCurrentFighter().getAttack();
+                if (player2.getCurrentFighter().isAlive())
+                    player1.getCurrentFighter().takeDamage(player2.getCurrentFighter().getAttack());
             }
             else { // Fighter2 attack first
-                currentHealth_player1 -= player2.getCurrentFighter().getAttack();
+                player1.getCurrentFighter().takeDamage(player2.getCurrentFighter().getAttack());
 
-                if (currentHealth_player1 > 0)
-                    currentHealth_player2 -= player1.getCurrentFighter().getAttack();
+                if (player1.getCurrentFighter().isAlive())
+                    player2.getCurrentFighter().takeDamage(player1.getCurrentFighter().getAttack());
             }
         }
 
-        if ( currentHealth_player1 <= 0 )
+        if (!player1.getCurrentFighter().isAlive())
             return player2;
         else
             return player1;

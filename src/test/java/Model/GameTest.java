@@ -37,6 +37,11 @@ class GameTest {
     void fightShouldReturnAWinner () {
         Player player1 = new Player();
         Player player2 = new Player();
+        Fighter fighter1 = mock(Fighter.class);
+        Fighter fighter2 = mock(Fighter.class);
+
+        player1.setCurrentFighter(fighter1);
+        player2.setCurrentFighter(fighter2);
 
         SUT.setPlayer1(player1);
         SUT.setPlayer2(player2);
