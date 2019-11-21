@@ -2,9 +2,9 @@ package Model;
 
 public class Fighter {
     private int attack;
-    private int currentHealth;
+    private int currentHealth; // Health during the fight
     private int originalHealth;
-    private boolean isAlive;
+    private boolean isAlive; // Verify if the fighter is alive
 
     public Fighter(int attack, int health) {
         this.attack = attack;
@@ -29,7 +29,7 @@ public class Fighter {
         this.currentHealth -= damage;
 
         if (currentHealth<=0)
-            isAlive = false;
+            isAlive = false; // Update the boolean isAlive
     }
 
     public boolean isAlive() {

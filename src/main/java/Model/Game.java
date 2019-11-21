@@ -66,11 +66,6 @@ public class Game {
 
         Random random = new Random();
 
-
-
-        /*int currentHealth_player1 = player1.getCurrentFighter().getOriginalHealth();
-        int currentHealth_player2 = player2.getCurrentFighter().getOriginalHealth();*/
-
         while (player1.getCurrentFighter().isAlive() && player2.getCurrentFighter().isAlive()) {
             boolean turn = random.nextBoolean();
 
