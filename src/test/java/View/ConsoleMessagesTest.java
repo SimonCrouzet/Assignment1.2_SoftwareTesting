@@ -31,8 +31,7 @@ class ConsoleMessagesTest {
     @Test
     void showWelcomeMessageTest () throws IOException {
         SUT.welcomeMessage();
-        String expected = "Welcome to the BIG FIGHT game!" +
-                "\nChoose how many rounds you want to play.\n";
+        String expected = "Welcome to the BIG FIGHT game!";
 
         assertEquals( expected, outContent.toString() );
     }
