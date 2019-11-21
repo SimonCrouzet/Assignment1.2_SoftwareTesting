@@ -44,6 +44,17 @@ public class Game {
         return null;
     }
 
+    /*
+    fight() method represents ONE ROUND between one fighter from each player
+    1. We check if each player has a fighter and if they are alive
+    2. we initialize currentHealt variables
+    3. while both of the fighters are alive:
+        3.a. We randomly choose who attacks first
+        3.b. In each turn both of them attack
+        3.c. We always check if during the first hit the fighter who took damage is still alive
+    4. We return the player whose fighter stayed alive
+    * */
+
     public Player fight() {
         if (player2.getCurrentFighter()==null || player2.getCurrentFighter().getOriginalHealth()<=0)
             return player1;
