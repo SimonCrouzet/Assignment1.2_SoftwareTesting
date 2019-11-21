@@ -5,7 +5,12 @@ public class Player {
     private int score;
     private Fighter currentFighter;
 
-    public Player(){
+    public Player () {
+        score = 0;
+    }
+
+    public Player( int number ){
+        playerNumber = number;
         score = 0;
     }
 
