@@ -2,6 +2,7 @@ package View;
 
 import Model.Player;
 import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.*;
 
 import java.io.*;
@@ -29,17 +30,20 @@ class ConsoleMessagesTest {
         System.setOut(originalOutput);
     }
 
-
     @Test
     void showWelcomeMessageTest () throws IOException {
+        outContent.reset();
         SUT.welcomeMessage();
-        String expected = "Welcome to the BIG FIGHT game!";
+        String expected = "Welcome to the BIG FIGHT game!\n";
 
         assertEquals( expected, outContent.toString() );
+
     }
 
     @Test
     void showThwWinnerOfTheFight () throws IOException {
+
+        outContent.reset();
         Player p = mock(Player.class);
         when(p.getPlayerNumber()).thenReturn(1);
 
