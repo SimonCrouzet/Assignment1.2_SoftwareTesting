@@ -47,11 +47,22 @@ public class Game {
             return player1;
         else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getHealth()<=0)
             return player2;
-        
-        else if (player1.getCurrentFighter().getAttack()>player2.getCurrentFighter().getAttack())
-            return player1;
-        else
+
+        int currentHealth_player1 = player1.getCurrentFighter().getHealth();
+        int currentHealth_player2 = player2.getCurrentFighter().getHealth();
+
+        while (currentHealth_player1 > 0 && currentHealth_player2 > 0 ) {
+            currentHealth_player2 -= player1.getCurrentFighter().getAttack();
+
+            if (currentHealth_player2 > 0 )
+                currentHealth_player1 -= player2.getCurrentFighter().getAttack();
+        }
+
+        if ( currentHealth_player1 <= 0 )
             return player2;
+        else
+            return player1;
+
     }
 
 }
