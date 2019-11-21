@@ -1,5 +1,7 @@
 package View;
 
+import Model.Player;
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
@@ -35,5 +37,17 @@ class ConsoleMessagesTest {
 
         assertEquals( expected, outContent.toString() );
     }
+
+    @Test
+    void showThwWinnerOfTheFight () throws IOException {
+        Player p = mock(Player.class);
+        when(p.getPlayerNumber()).thenReturn(1);
+
+        SUT.printTheFightWinner( p );
+        String expected = "In this round the winner was player number " + 1 + "!\n";
+
+        assertEquals( expected, outContent.toString() );
+    }
+
 
 }
