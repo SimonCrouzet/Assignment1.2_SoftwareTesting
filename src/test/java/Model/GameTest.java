@@ -49,8 +49,8 @@ class GameTest {
         when(fighter1.getAttack()).thenReturn(50);
         when(fighter2.getAttack()).thenReturn(1);
 
-        when(fighter1.getHealth()).thenReturn(100);
-        when(fighter2.getHealth()).thenReturn(10);
+        when(fighter1.getOriginalHealth()).thenReturn(100);
+        when(fighter2.getOriginalHealth()).thenReturn(10);
 
         Player player1 = mock(Player.class);
         Player player2 = mock(Player.class);
@@ -75,8 +75,8 @@ class GameTest {
         when(fighter1.getAttack()).thenReturn(50);
         when(fighter2.getAttack()).thenReturn(1);
 
-        when(fighter1.getHealth()).thenReturn(1);
-        when(fighter2.getHealth()).thenReturn(10000);
+        when(fighter1.getOriginalHealth()).thenReturn(1);
+        when(fighter2.getOriginalHealth()).thenReturn(10000);
 
         Player player1 = mock(Player.class);
         Player player2 = mock(Player.class);
