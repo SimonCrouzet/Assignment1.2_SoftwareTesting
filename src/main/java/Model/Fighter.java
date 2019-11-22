@@ -7,6 +7,10 @@ public class Fighter {
     private boolean isAlive; // Verify if the fighter is alive
 
     public Fighter(int attack, int health) {
+        if ( health <= 0 ) {
+            throw new IllegalArgumentException();
+        }
+
         this.attack = attack;
         this.originalHealth = health;
         this.currentHealth = health;
