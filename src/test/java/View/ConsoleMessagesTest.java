@@ -60,7 +60,7 @@ class ConsoleMessagesTest {
         SUT.goodbyeMessage();
         String expected = "What a game it was!\n" +
                 "\tStay STRONG fighters!" +
-                "\n GOODBYE!";
+                "\nGOODBYE!";
 
         assertEquals( expected, outContent.toString() );
     }
@@ -100,6 +100,32 @@ class ConsoleMessagesTest {
         stringBuilder.append("After this round we have below scores:\n");
         stringBuilder.append("\n");
         stringBuilder.append( String.format("%-20s%-15d","Player 1", 0) );
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-20s%-15d","Player 2", 0) );
+        stringBuilder.append("\n");
+
+        String expected = stringBuilder.toString();
+
+        assertEquals( expected, outContent.toString() );
+    }
+
+    @Test
+    void statisticsAfretOneRoundWonByPlayer1Test() {
+        outContent.reset();
+        Game gameMock = mock(Game.class);
+        when(gameMock.getPlayer1()).thenReturn( mock(Player.class));
+        when(gameMock.getPlayer2()).thenReturn(mock(Player.class));
+
+        when(gameMock.getPlayer1().getScore()).thenReturn(1);
+        when(gameMock.getPlayer2().getScore()).thenReturn(0);
+
+        SUT.printStatistics(gameMock);
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("After this round we have below scores:\n");
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-20s%-15d","Player 1", 1) );
         stringBuilder.append("\n");
         stringBuilder.append( String.format("%-20s%-15d","Player 2", 0) );
         stringBuilder.append("\n");
