@@ -26,6 +26,10 @@ public class Game {
         return winningScoreLimit;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
     public void setPlayer1(Player player1) {
         this.player1 = player1;
     }
@@ -99,8 +103,10 @@ public class Game {
      * @return the round winner
      */
     public Player round() {
-        player1.setCurrentFighter(new Fighter(10,20));
-        player2.setCurrentFighter(new Fighter(10,20));
+        Random random = new Random();
+
+        player1.setCurrentFighter(new Fighter(random.nextInt(50),random.nextInt(200)));
+        player2.setCurrentFighter(new Fighter(random.nextInt(50),random.nextInt(200)));
 
         Player winner = fight();
 
