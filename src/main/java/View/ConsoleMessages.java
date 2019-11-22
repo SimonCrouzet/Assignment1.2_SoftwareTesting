@@ -28,7 +28,7 @@ public class ConsoleMessages {      // class with messages that we would print t
 
         stringBuilder.append("After this round we have below scores:\n");
         stringBuilder.append("\n");
-        stringBuilder.append( String.format("%-20s%-15d","Player 1", game.getPlayer1().getScore()) );
+        stringBuilder.append( String.format("%-20s%-15d","Player 1", game.getPlayer1().getScore()) );       // getting first player's score
         stringBuilder.append("\n");
         stringBuilder.append( String.format("%-20s%-15d","Player 2", 0) );
         stringBuilder.append("\n");
