@@ -11,4 +11,11 @@ public class ConsoleMessages {      // class with messages that we would print t
     public void printTheFightWinner (Player p) {
         System.out.print("In this round the winner was player number " + p.getPlayerNumber() + "!\n");
     }
+
+    public void goodbyeMessage() {
+        System.out.print("What a game it was!\n" +
+                "\tStay STRONG fighters!" +
+                "\n GOODBYE!");
+    }
+
 }
