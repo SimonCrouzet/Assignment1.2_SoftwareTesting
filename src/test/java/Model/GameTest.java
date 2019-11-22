@@ -184,6 +184,18 @@ class GameTest {
 
     @Test
     void playerScoresOnePointWhenWinsFight() {
+        Fighter fighter1 = mock(Fighter.class);
+        Fighter fighter2 = mock(Fighter.class);
+
+        when(fighter1.getAttack()).thenReturn(50);
+        when(fighter2.getAttack()).thenReturn(100);
+
+        when(fighter1.getOriginalHealth()).thenReturn(1);
+        when(fighter2.getOriginalHealth()).thenReturn(1);
+
+        SUT.getPlayer1().setCurrentFighter(fighter1);
+        SUT.getPlayer2().setCurrentFighter(fighter2);
+
         Player winner = SUT.round();
         assertEquals(1, winner.getScore(), "Winner should now have 1 point!");
     }
