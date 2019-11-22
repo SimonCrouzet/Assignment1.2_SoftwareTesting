@@ -7,7 +7,7 @@ public class Fighter {
     private boolean isAlive; // Verify if the fighter is alive
 
     public Fighter(int attack, int health) {
-        if ( health <= 0 ) {
+        if ( health <= 0 ) {                // we cannot create an already dead fighter
             throw new IllegalArgumentException();
         }
 
