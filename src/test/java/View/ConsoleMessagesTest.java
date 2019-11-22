@@ -53,5 +53,15 @@ class ConsoleMessagesTest {
         assertEquals( expected, outContent.toString() );
     }
 
+    @Test
+    void showGoodbyeMessage() {
+        outContent.reset();
+        SUT.goodbyeMessage();
+        String expected = "What a game it was!\n" +
+                "\tStay STRONG fighters!" +
+                "\n GOODBYE!";
+
+        assertEquals( expected, outContent.toString() );
+    }
 
 }
