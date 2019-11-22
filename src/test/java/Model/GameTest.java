@@ -221,7 +221,7 @@ class GameTest {
 
     @Test
     void playersHaveFighterAtEveryRound() {
-        while (!SUT.getGameOver()) {
+        while (!SUT.isGameOver()) {
             SUT.round();
 
             assertNotNull(SUT.getPlayer1().getCurrentFighter());
@@ -233,7 +233,7 @@ class GameTest {
     void fightersAreNotAlwaysTheSame() {
         List<Fighter> fighters = new ArrayList<>();
 
-        while (!SUT.getGameOver()) {
+        while (!SUT.isGameOver()) {
             SUT.round();
 
             if (!fighters.contains(SUT.getPlayer1().getCurrentFighter()))
@@ -242,6 +242,6 @@ class GameTest {
                 fighters.add(SUT.getPlayer2().getCurrentFighter());
         }
 
-        assertTrue(fighters.size()>=3);
+        assertTrue(fighters.stream().distinct().count()>=3);
     }
 }

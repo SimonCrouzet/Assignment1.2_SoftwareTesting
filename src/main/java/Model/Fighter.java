@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class Fighter {
     private int attack;
     private int currentHealth; // Health during the fight
@@ -42,5 +44,21 @@ public class Fighter {
 
     public boolean isAlive() {
         return isAlive;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fighter fighter = (Fighter) o;
+        return attack == fighter.attack &&
+                currentHealth == fighter.currentHealth &&
+                originalHealth == fighter.originalHealth &&
+                isAlive == fighter.isAlive;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(attack, currentHealth, originalHealth, isAlive);
     }
 }
