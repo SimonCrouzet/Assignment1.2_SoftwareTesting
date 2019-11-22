@@ -19,7 +19,7 @@ public class ConsoleMessages {      // class with messages that we would print t
     }
 
     public void newRoundMessage( int roundNumber ) {
-        System.out.println("Time for ROUND number "+ roundNumber +"!");
+        System.out.println("Time for ROUND number "+ roundNumber +"!");             // before each round this message is printed
     }
 
 }
