@@ -11,6 +11,10 @@ public class Fighter {
             throw new IllegalArgumentException();
         }
 
+        if ( attack <= 0 ) {
+            throw new IllegalArgumentException();
+        }
+
         this.attack = attack;
         this.originalHealth = health;
         this.currentHealth = health;
