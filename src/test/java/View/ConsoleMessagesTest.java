@@ -241,4 +241,16 @@ class ConsoleMessagesTest {
 
         assertEquals( expected, outContent.toString() );
     }
+
+    @Test
+    void printGameWinnerShouldPrint_1() {
+        outContent.reset();
+        Player p = mock(Player.class);
+        when(p.getPlayerNumber()).thenReturn(1);
+
+        SUT.printGameWinner( p );
+        String expected = "AND THE WINNER IS Player number " + 1 + "!\n";
+
+        assertEquals( expected, outContent.toString() );
+    }
 }
