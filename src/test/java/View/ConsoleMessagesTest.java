@@ -1,5 +1,6 @@
 package View;
 
+import Model.Fighter;
 import Model.Game;
 import Model.Player;
 import static org.mockito.Mockito.*;
@@ -154,6 +155,43 @@ class ConsoleMessagesTest {
         stringBuilder.append( String.format("%-20s%-15d","Player 1", 0) );
         stringBuilder.append("\n");
         stringBuilder.append( String.format("%-20s%-15d","Player 2", 2) );
+        stringBuilder.append("\n");
+
+        String expected = stringBuilder.toString();
+
+        assertEquals( expected, outContent.toString() );
+    }
+
+    @Test
+    void printFightersSmallValuesTest() {
+        outContent.reset();
+        Game gameMock = mock(Game.class);
+        when(gameMock.getPlayer1()).thenReturn(mock(Player.class));
+        when(gameMock.getPlayer2()).thenReturn(mock(Player.class));
+
+        Fighter fighter1 = mock(Fighter.class);
+        Fighter fighter2 = mock(Fighter.class);
+
+        when(gameMock.getPlayer1().getCurrentFighter()).thenReturn(fighter1);
+        when(gameMock.getPlayer1().getCurrentFighter()).thenReturn(fighter2);
+
+        when(fighter1.getAttack()).thenReturn(10);
+        when(fighter1.getOriginalHealth()).thenReturn(20);
+        when(fighter1.getCurrentHealth()).thenReturn(20);
+
+        when(fighter2.getAttack()).thenReturn(5);
+        when(fighter2.getOriginalHealth()).thenReturn(15);
+        when(fighter2.getCurrentHealth()).thenReturn(15);
+
+        SUT.printFightersStatistics(gameMock);
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("In this round fighters are:\n");
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","1st fighter", "ATTACK:", 10, "HEALTH:", 20) );
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","2nd fighter", "ATTACK:", 5, "HEALTH:", 15) );
         stringBuilder.append("\n");
 
         String expected = stringBuilder.toString();
