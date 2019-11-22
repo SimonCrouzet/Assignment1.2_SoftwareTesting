@@ -23,7 +23,7 @@ public class ConsoleMessages {      // class with messages that we would print t
         System.out.println("Time for ROUND number "+ roundNumber +"!");             // before each round this message is printed
     }
 
-    public void printStatistics(Game game) {
+    public void printStatistics(Game game) {                                        // in Game class object we store score info
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("After this round we have below scores:\n");
