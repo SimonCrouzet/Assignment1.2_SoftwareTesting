@@ -1,5 +1,6 @@
 package View;
 
+import Model.Game;
 import Model.Player;
 
 public class ConsoleMessages {      // class with messages that we would print to the console
@@ -20,6 +21,21 @@ public class ConsoleMessages {      // class with messages that we would print t
 
     public void newRoundMessage( int roundNumber ) {
         System.out.println("Time for ROUND number "+ roundNumber +"!");             // before each round this message is printed
+    }
+
+    public void printStatistics(Game game) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("After this round we have below scores:\n");
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-20s%-15d","Player 1", 0) );
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-20s%-15d","Player 2", 0) );
+        stringBuilder.append("\n");
+
+        String output = stringBuilder.toString();
+
+        System.out.print(output);
     }
 
 }
