@@ -33,4 +33,8 @@ public class Player {
     public void setCurrentFighter(Fighter currentFighter) {
         this.currentFighter = currentFighter;
     }
+
+    public void scoreAPoint() {
+        ++score;
+    }
 }

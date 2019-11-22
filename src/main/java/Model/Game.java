@@ -90,4 +90,16 @@ public class Game {
 
     }
 
+    /**
+     * Initialize a round, then score the point
+     * @return the round winner
+     */
+    public Player round() {
+        Player winner = fight();
+
+        winner.scoreAPoint();
+
+        return winner;
+    }
+
 }
