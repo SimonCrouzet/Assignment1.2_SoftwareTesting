@@ -14,7 +14,6 @@ public class ConsoleMessages {      // class with messages that we would print t
     }
 
     public void printGameWinner(Player player) {
-
         System.out.print("AND THE WINNER IS Player number " + 1 + "!\n");
     }
 
