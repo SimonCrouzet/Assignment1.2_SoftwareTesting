@@ -40,6 +40,7 @@ public class ConsoleMessages {      // class with messages that we would print t
 
     /*
     * We print attack and health value for each fighter
+    * We use nice looking layout
     * */
     public void printFightersStatistics(Game game) {
         StringBuilder stringBuilder = new StringBuilder();
