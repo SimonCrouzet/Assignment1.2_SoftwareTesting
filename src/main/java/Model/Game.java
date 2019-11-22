@@ -90,4 +90,12 @@ public class Game {
 
     }
 
+    public Player round() {
+        Player winner = fight();
+
+        winner.scoreAPoint();
+
+        return winner;
+    }
+
 }
