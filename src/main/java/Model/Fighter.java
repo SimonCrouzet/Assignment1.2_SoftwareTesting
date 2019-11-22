@@ -7,6 +7,14 @@ public class Fighter {
     private boolean isAlive; // Verify if the fighter is alive
 
     public Fighter(int attack, int health) {
+        if ( health <= 0 ) {                // we cannot create an already dead fighter
+            throw new IllegalArgumentException("Health value cannot be <= 0.");
+        }
+
+        if ( attack <= 0 ) {
+            throw new IllegalArgumentException("Attack value cannot be <= 0.");
+        }
+
         this.attack = attack;
         this.originalHealth = health;
         this.currentHealth = health;
