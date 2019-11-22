@@ -3,6 +3,8 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.NumberFormat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FighterTest {
@@ -33,4 +35,10 @@ class FighterTest {
     void getOriginalHealth() {
         assertEquals(50, SUT.getOriginalHealth());
     }
+
+    @Test
+    void createFighterWithNoHealthTest() {
+        assertThrows( IllegalArgumentException.class, () -> new Fighter(10, 0) );
+    }
+
 }
