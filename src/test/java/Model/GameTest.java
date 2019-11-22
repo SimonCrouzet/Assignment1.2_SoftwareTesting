@@ -3,6 +3,9 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -198,5 +201,47 @@ class GameTest {
 
         Player winner = SUT.round();
         assertEquals(1, winner.getScore(), "Winner should now have 1 point!");
+    }
+
+    @Test
+    void playUntilWeHaveAWinner() {
+        Player winner = SUT.play();
+
+        assertEquals(SUT.getWinningScoreLimit(), winner.getScore(), "The winner should reach the score limit!");
+
+        if (!SUT.getPlayer1().equals(winner))
+            assertTrue(SUT.getPlayer1().getScore()<SUT.getWinningScoreLimit(), "The looser should not reach the score" +
+                    " limit!");
+        else if (!SUT.getPlayer2().equals(winner))
+            assertTrue(SUT.getPlayer2().getScore()<SUT.getWinningScoreLimit(), "The looser should not reach the score" +
+                    " limit!");
+
+        assertTrue(SUT.getWinner().equals(SUT.getPlayer1()) || SUT.getWinner().equals(SUT.getPlayer2()));
+    }
+
+    @Test
+    void playersHaveFighterAtEveryRound() {
+        while (!SUT.isGameOver()) {
+            SUT.round();
+
+            assertNotNull(SUT.getPlayer1().getCurrentFighter());
+            assertNotNull(SUT.getPlayer2().getCurrentFighter());
+        }
+    }
+
+    @Test
+    void fightersAreNotAlwaysTheSame() {
+        List<Fighter> fighters = new ArrayList<>();
+
+        while (!SUT.isGameOver()) {
+            SUT.round();
+
+            if (!fighters.contains(SUT.getPlayer1().getCurrentFighter()))
+                fighters.add(SUT.getPlayer1().getCurrentFighter());
+            if (!fighters.contains(SUT.getPlayer2().getCurrentFighter()))
+                fighters.add(SUT.getPlayer2().getCurrentFighter());
+        }
+
+        assertTrue(fighters.stream().distinct().count()>=3);
     }
 }

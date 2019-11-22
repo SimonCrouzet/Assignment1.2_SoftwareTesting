@@ -6,10 +6,14 @@ public class Game {
     private Player player1;
     private Player player2;
     private int winningScoreLimit = 3;
+    private boolean gameOver;
+    private Random random;
 
     public Game() {
         player1 = new Player();
         player2 = new Player();
+        gameOver = false;
+        random = new Random();
     }
 
     public Player getPlayer1() {
@@ -24,6 +28,10 @@ public class Game {
         return winningScoreLimit;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
     public void setPlayer1(Player player1) {
         this.player1 = player1;
     }
@@ -34,10 +42,12 @@ public class Game {
 
     public Player getWinner() {
         if (player1.getScore() >= winningScoreLimit ) {
+            gameOver = true;
             return player1;
         }
 
         if (player2.getScore() >= winningScoreLimit ) {
+            gameOver = true;
             return player2;
         }
 
@@ -64,7 +74,6 @@ public class Game {
         else if (player1.getCurrentFighter()==null || player1.getCurrentFighter().getOriginalHealth()<=0)
             return player2;
 
-        Random random = new Random();
 
         while (player1.getCurrentFighter().isAlive() && player2.getCurrentFighter().isAlive()) {
             boolean turn = random.nextBoolean();
@@ -95,11 +104,22 @@ public class Game {
      * @return the round winner
      */
     public Player round() {
+        // It's not allowed to construct a Fighter with Health (or Attack) equals 0
+        player1.setCurrentFighter(new Fighter(random.nextInt(50)+1,random.nextInt(200)+1));
+        player2.setCurrentFighter(new Fighter(random.nextInt(50)+1,random.nextInt(200)+1));
+
         Player winner = fight();
 
-        winner.scoreAPoint();
+        gameOver = winner.scoreAPoint(winningScoreLimit);
 
         return winner;
+    }
+
+    public Player play() {
+        while (!gameOver) {
+            round();
+        }
+        return getWinner();
     }
 
 }

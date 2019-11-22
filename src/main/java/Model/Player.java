@@ -34,7 +34,8 @@ public class Player {
         this.currentFighter = currentFighter;
     }
 
-    public void scoreAPoint() {
+    public boolean scoreAPoint(int pointsToWin) {
         ++score;
+        return (score>=pointsToWin);
     }
 }
