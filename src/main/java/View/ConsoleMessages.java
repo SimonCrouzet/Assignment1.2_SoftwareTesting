@@ -14,7 +14,7 @@ public class ConsoleMessages {      // class with messages that we would print t
     }
 
     public void printGameWinner(Player player) {
-        System.out.print("AND THE WINNER IS Player number " + player.getPlayerNumber() + "!\n");
+        System.out.print("AND THE WINNER IS Player number " + player.getPlayerNumber() + "!\n");            // depending on the score limit, player who gets this score first wins
     }
 
     public void goodbyeMessage() {
