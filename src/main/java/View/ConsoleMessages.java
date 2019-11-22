@@ -7,4 +7,8 @@ public class ConsoleMessages {      // class with messages that we would print t
     public void welcomeMessage() {
         System.out.print("Welcome to the BIG FIGHT game!\n");
     }
+
+    public void printTheFightWinner (Player p) {
+        System.out.print("In this round the winner was player number " + p.getPlayerNumber() + "!\n");
+    }
 }
