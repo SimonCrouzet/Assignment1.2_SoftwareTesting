@@ -95,11 +95,21 @@ public class Game {
      * @return the round winner
      */
     public Player round() {
+        player1.setCurrentFighter(new Fighter(10,20));
+        player2.setCurrentFighter(new Fighter(10,20));
+
         Player winner = fight();
 
         winner.scoreAPoint();
 
         return winner;
+    }
+
+    public Player play() {
+        while (getWinner()==null) {
+            round();
+        }
+        return getWinner();
     }
 
 }
