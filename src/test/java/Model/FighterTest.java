@@ -41,4 +41,9 @@ class FighterTest {
         assertThrows( IllegalArgumentException.class, () -> new Fighter(10, 0) );
     }
 
+    @Test
+    void createFighterWithNoAttackTest() {
+        assertThrows( IllegalArgumentException.class, () -> new Fighter(-1, 10) );
+    }
+
 }
