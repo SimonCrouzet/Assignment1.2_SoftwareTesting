@@ -64,4 +64,13 @@ class ConsoleMessagesTest {
         assertEquals( expected, outContent.toString() );
     }
 
+    @Test
+    void showNewRoundMessage() {
+        outContent.reset();
+        SUT.newRoundMessage(4);
+        String expected = "Time for ROUND number "+ 4 +"!\n";
+
+        assertEquals( expected, outContent.toString() );
+    }
+
 }
