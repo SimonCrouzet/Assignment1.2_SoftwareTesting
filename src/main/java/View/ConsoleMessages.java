@@ -30,7 +30,7 @@ public class ConsoleMessages {      // class with messages that we would print t
         stringBuilder.append("\n");
         stringBuilder.append( String.format("%-20s%-15d","Player 1", game.getPlayer1().getScore()) );       // getting first player's score
         stringBuilder.append("\n");
-        stringBuilder.append( String.format("%-20s%-15d","Player 2", 0) );
+        stringBuilder.append( String.format("%-20s%-15d","Player 2", game.getPlayer2().getScore()) );
         stringBuilder.append("\n");
 
         String output = stringBuilder.toString();
