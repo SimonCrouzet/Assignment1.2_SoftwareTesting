@@ -65,10 +65,19 @@ class ConsoleMessagesTest {
     }
 
     @Test
-    void showNewRoundMessage() {
+    void show4thRoundMessage() {
         outContent.reset();
         SUT.newRoundMessage(4);
         String expected = "Time for ROUND number "+ 4 +"!\n";
+
+        assertEquals( expected, outContent.toString() );
+    }
+
+    @Test
+    void show2ndRoundMessage() {
+        outContent.reset();
+        SUT.newRoundMessage(2);
+        String expected = "Time for ROUND number "+ 2 +"!\n";
 
         assertEquals( expected, outContent.toString() );
     }
