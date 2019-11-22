@@ -110,7 +110,7 @@ class ConsoleMessagesTest {
     }
 
     @Test
-    void statisticsAfretOneRoundWonByPlayer1Test() {
+    void statisticsAfterOneRoundWonByPlayer1Test() {
         outContent.reset();
         Game gameMock = mock(Game.class);
         when(gameMock.getPlayer1()).thenReturn( mock(Player.class));
@@ -135,4 +135,29 @@ class ConsoleMessagesTest {
         assertEquals( expected, outContent.toString() );
     }
 
+    @Test
+    void statisticsAfterTwoRoundsWonByPlayer2Test() {
+        outContent.reset();
+        Game gameMock = mock(Game.class);
+        when(gameMock.getPlayer1()).thenReturn( mock(Player.class));
+        when(gameMock.getPlayer2()).thenReturn(mock(Player.class));
+
+        when(gameMock.getPlayer1().getScore()).thenReturn(0);
+        when(gameMock.getPlayer2().getScore()).thenReturn(2);
+
+        SUT.printStatistics(gameMock);
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("After this round we have below scores:\n");
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-20s%-15d","Player 1", 0) );
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-20s%-15d","Player 2", 2) );
+        stringBuilder.append("\n");
+
+        String expected = stringBuilder.toString();
+
+        assertEquals( expected, outContent.toString() );
+    }
 }
