@@ -6,10 +6,12 @@ public class Game {
     private Player player1;
     private Player player2;
     private int winningScoreLimit = 3;
+    private boolean gameOver;
 
     public Game() {
         player1 = new Player();
         player2 = new Player();
+        gameOver = false;
     }
 
     public Player getPlayer1() {
@@ -34,10 +36,12 @@ public class Game {
 
     public Player getWinner() {
         if (player1.getScore() >= winningScoreLimit ) {
+            gameOver = true;
             return player1;
         }
 
         if (player2.getScore() >= winningScoreLimit ) {
+            gameOver = true;
             return player2;
         }
 
@@ -100,13 +104,13 @@ public class Game {
 
         Player winner = fight();
 
-        winner.scoreAPoint();
+        gameOver = winner.scoreAPoint(winningScoreLimit);
 
         return winner;
     }
 
     public Player play() {
-        while (getWinner()==null) {
+        while (!gameOver) {
             round();
         }
         return getWinner();
