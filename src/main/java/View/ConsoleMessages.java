@@ -18,4 +18,8 @@ public class ConsoleMessages {      // class with messages that we would print t
         System.out.println("GOODBYE!");
     }
 
+    public void newRoundMessage( int roundNumber ) {
+        System.out.print("Time for ROUND number "+ 4 +"!\n");
+    }
+
 }
