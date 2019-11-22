@@ -38,4 +38,19 @@ public class ConsoleMessages {      // class with messages that we would print t
         System.out.print(output);
     }
 
+    public void printFightersStatistics(Game game) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("In this round fighters are:\n");
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","1st fighter", "ATTACK:", 10, "HEALTH:", 20) );
+        stringBuilder.append("\n");
+        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","2nd fighter", "ATTACK:", 5, "HEALTH:", 15) );
+        stringBuilder.append("\n");
+
+        String output = stringBuilder.toString();
+
+        System.out.print(output);
+    }
+
 }
