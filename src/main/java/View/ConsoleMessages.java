@@ -13,9 +13,9 @@ public class ConsoleMessages {      // class with messages that we would print t
     }
 
     public void goodbyeMessage() {
-        System.out.print("What a game it was!\n" +
-                "\tStay STRONG fighters!" +
-                "\n GOODBYE!");
+        System.out.println("What a game it was!");
+        System.out.println("\tStay STRONG fighters!");
+        System.out.println("GOODBYE!");
     }
 
 }
