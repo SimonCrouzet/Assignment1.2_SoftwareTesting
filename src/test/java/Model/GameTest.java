@@ -3,6 +3,9 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -218,11 +221,27 @@ class GameTest {
 
     @Test
     void playersHaveFighterAtEveryRound() {
-        while (SUT.getWinner()==null) {
+        while (!SUT.getGameOver()) {
             SUT.round();
 
             assertNotNull(SUT.getPlayer1().getCurrentFighter());
             assertNotNull(SUT.getPlayer2().getCurrentFighter());
         }
+    }
+
+    @Test
+    void fightersAreNotAlwaysTheSame() {
+        List<Fighter> fighters = new ArrayList<>();
+
+        while (!SUT.getGameOver()) {
+            SUT.round();
+
+            if (!fighters.contains(SUT.getPlayer1().getCurrentFighter()))
+                fighters.add(SUT.getPlayer1().getCurrentFighter());
+            if (!fighters.contains(SUT.getPlayer2().getCurrentFighter()))
+                fighters.add(SUT.getPlayer2().getCurrentFighter());
+        }
+
+        assertTrue(fighters.size()>=3);
     }
 }
