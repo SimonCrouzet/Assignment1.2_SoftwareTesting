@@ -166,14 +166,17 @@ class ConsoleMessagesTest {
     void printFightersSmallValuesTest() {
         outContent.reset();
         Game gameMock = mock(Game.class);
-        when(gameMock.getPlayer1()).thenReturn(mock(Player.class));
-        when(gameMock.getPlayer2()).thenReturn(mock(Player.class));
+        Player player1 = mock(Player.class);
+        Player player2 = mock(Player.class);
+
+        when(gameMock.getPlayer1()).thenReturn(player1);
+        when(gameMock.getPlayer2()).thenReturn(player2);
 
         Fighter fighter1 = mock(Fighter.class);
         Fighter fighter2 = mock(Fighter.class);
 
-        when(gameMock.getPlayer1().getCurrentFighter()).thenReturn(fighter1);
-        when(gameMock.getPlayer1().getCurrentFighter()).thenReturn(fighter2);
+        when(player1.getCurrentFighter()).thenReturn(fighter1);
+        when(player2.getCurrentFighter()).thenReturn(fighter2);
 
         when(fighter1.getAttack()).thenReturn(10);
         when(fighter1.getOriginalHealth()).thenReturn(20);
@@ -203,14 +206,17 @@ class ConsoleMessagesTest {
     void printFightersBigValuesTest() {
         outContent.reset();
         Game gameMock = mock(Game.class);
-        when(gameMock.getPlayer1()).thenReturn(mock(Player.class));
-        when(gameMock.getPlayer2()).thenReturn(mock(Player.class));
+        Player player1 = mock(Player.class);
+        Player player2 = mock(Player.class);
+
+        when(gameMock.getPlayer1()).thenReturn(player1);
+        when(gameMock.getPlayer2()).thenReturn(player2);
 
         Fighter fighter1 = mock(Fighter.class);
         Fighter fighter2 = mock(Fighter.class);
 
-        when(gameMock.getPlayer1().getCurrentFighter()).thenReturn(fighter1);
-        when(gameMock.getPlayer1().getCurrentFighter()).thenReturn(fighter2);
+        when(player1.getCurrentFighter()).thenReturn(fighter1);
+        when(player2.getCurrentFighter()).thenReturn(fighter2);
 
         when(fighter1.getAttack()).thenReturn(80);
         when(fighter1.getOriginalHealth()).thenReturn(88);
