@@ -46,9 +46,9 @@ public class ConsoleMessages {      // class with messages that we would print t
 
         stringBuilder.append("In this round fighters are:\n");
         stringBuilder.append("\n");
-        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","1st fighter", "ATTACK:", 10, "HEALTH:", 20) );
+        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","1st fighter", "ATTACK:", game.getPlayer1().getCurrentFighter().getAttack(), "HEALTH:", game.getPlayer1().getCurrentFighter().getOriginalHealth()) );
         stringBuilder.append("\n");
-        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","2nd fighter", "ATTACK:", 5, "HEALTH:", 15) );
+        stringBuilder.append( String.format("%-15s%-10s%-5d%-10s%-5d","2nd fighter", "ATTACK:", game.getPlayer2().getCurrentFighter().getAttack(), "HEALTH:", game.getPlayer2().getCurrentFighter().getOriginalHealth()) );
         stringBuilder.append("\n");
 
         String output = stringBuilder.toString();
