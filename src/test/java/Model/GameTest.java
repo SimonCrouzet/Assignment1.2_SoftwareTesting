@@ -175,4 +175,16 @@ class GameTest {
 
         assertThrows(IllegalArgumentException.class, () -> SUT.fight());
     }
+
+    @Test
+    void playersHave0PointsAtTheBeginning() {
+        assertEquals(0, SUT.getPlayer1().getScore(), "Players should start with 0 points!");
+        assertEquals(0, SUT.getPlayer2().getScore(), "Players should start with 0 points!");
+    }
+
+    @Test
+    void playerScoresOnePointWhenWinsFight() {
+        Player winner = SUT.round();
+        assertEquals(1, winner.getScore(), "Winner should now have 1 point!");
+    }
 }
