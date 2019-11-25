@@ -1,7 +1,12 @@
 package Controller;
 
+import View.ConsoleMessages;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.function.BooleanSupplier;
@@ -18,5 +23,16 @@ class PlayGameTest {
     @Test
     void startTest() {
         assertTrue(SUT.start(), "start() should return true");
+    }
+
+    @Test
+    void shouldBePolite() {
+        ConsoleMessages mockConsole = new ConsoleMessages();
+        mockConsole = Mockito.spy(mockConsole);
+
+        SUT.setConsole(mockConsole);
+
+        verify(mockConsole).welcomeMessage();
+        verify(mockConsole).goodbyeMessage();
     }
 }
