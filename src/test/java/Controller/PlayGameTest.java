@@ -32,6 +32,8 @@ class PlayGameTest {
 
         SUT.setConsole(mockConsole);
 
+        SUT.start();
+
         verify(mockConsole).welcomeMessage();
         verify(mockConsole).goodbyeMessage();
     }
