@@ -31,7 +31,7 @@ public class PlayGame {
         this.console = console;
     }
 
-    public void setGame(Game game) {
+    protected void setGame(Game game) {
         this.game = game;
     }
 

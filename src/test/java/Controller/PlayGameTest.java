@@ -19,6 +19,9 @@ class PlayGameTest {
     private Player mockPlayer;
     private ConsoleMessages mockConsole;
 
+    /**
+     * mock the SUT's attributes and the methods called, to avoid any NullPointerException during our tests
+     */
     @BeforeEach
     void setUp() {
         SUT = new PlayGame();
