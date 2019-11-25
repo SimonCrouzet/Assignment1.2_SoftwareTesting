@@ -13,8 +13,7 @@ public class PlayGame {
     }
 
     public PlayGame() {
-        game = new Game();
-        console = new ConsoleMessages();
+        this(new Game(), new ConsoleMessages());
     }
 
     public boolean start() {
@@ -25,7 +24,7 @@ public class PlayGame {
         return true;
     }
 
-    public void setConsole(ConsoleMessages console) {
+    protected void setConsole(ConsoleMessages console) {
         this.console = console;
     }
 }
