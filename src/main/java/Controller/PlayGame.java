@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Game;
+import Model.Player;
 import View.ConsoleMessages;
 
 public class PlayGame {
@@ -17,14 +18,28 @@ public class PlayGame {
     }
 
     public boolean start() {
-
         console.welcomeMessage();
-        console.goodbyeMessage();
 
+        Player winner = game.getWinner();
+        console.printGameWinner(winner);
+
+        console.goodbyeMessage();
         return true;
     }
 
     protected void setConsole(ConsoleMessages console) {
         this.console = console;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public ConsoleMessages getConsole() {
+        return console;
     }
 }
