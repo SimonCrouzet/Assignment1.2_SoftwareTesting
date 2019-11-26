@@ -37,6 +37,8 @@ class PlayGameTest {
         SUT.setGame(mockGame);
 
         when(mockGame.getWinner()).thenReturn(mockPlayerWinner);
+        when(mockGame.getPlayer1()).thenReturn(mockPlayerWinner);
+        when(mockGame.getPlayer2()).thenReturn(mockPlayerLoser);
 
         when(mockPlayerWinner.getPlayerNumber()).thenReturn(1);
         when(mockPlayerLoser.getPlayerNumber()).thenReturn(2);
@@ -47,7 +49,7 @@ class PlayGameTest {
                 .thenReturn(1)
                 .thenReturn(2)
                 .thenReturn(3);
-        when(mockPlayerWinner.getScore())
+        when(mockPlayerLoser.getScore())
                 .thenReturn(0)
                 .thenReturn(1)
                 .thenReturn(2)
