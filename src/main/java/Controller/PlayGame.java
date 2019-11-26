@@ -17,6 +17,10 @@ public class PlayGame {
         this(new Game(), new ConsoleMessages());
     }
 
+    /**
+     * Method used to play to the game. Do the correct calls about the view and the models
+     * @return true if we don't have any technical issues during the game
+     */
     public boolean start() {
         console.welcomeMessage();
 
