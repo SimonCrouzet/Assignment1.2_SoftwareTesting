@@ -20,6 +20,11 @@ public class PlayGame {
     public boolean start() {
         console.welcomeMessage();
 
+        console.newRoundMessage(1);
+        Player roundWinner = game.round();
+        console.printTheFightWinner(roundWinner);
+        console.printStatistics(game);
+
         Player winner = game.getWinner();
         console.printGameWinner(winner);
 
