@@ -118,6 +118,9 @@ public class Game {
 
     public void chooseFighter( Player p1, Player p2 ) {
 
+        p1.setCurrentFighter( new Fighter(random.nextInt(50)+1,random.nextInt(200)+1) );
+
+        p2.setCurrentFighter( new Fighter(random.nextInt(50)+1,random.nextInt(200)+1) );
     }
 
 
