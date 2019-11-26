@@ -234,22 +234,34 @@ class GameTest {
     }
 
     @Test
-    void chooseFighterShouldReturnNotNull() {
+    void chooseFighterShouldSetPlayersFighters() {
         InputStream systemBackup = System.in;
         in = new ByteArrayInputStream("1 2".getBytes());
         System.setIn( in );
 
         Player p1 = spy(SUT.getPlayer1());
-//                mock(Player.class);
         Player p2 = spy( SUT.getPlayer2());
-//                mock(Player.class);
 
         SUT.chooseFighter(p1,p2);
 
         verify( p1, atLeastOnce() ).setCurrentFighter( any() );
         verify( p2, atLeastOnce() ).setCurrentFighter( any() );
 
+        System.setIn( systemBackup );
+    }
+
+    @Test
+    void chooseFighterShouldChooseANumber() {
+        InputStream systemBackup = System.in;
+        in = new ByteArrayInputStream("a".getBytes());
+        System.setIn( in );
+
+        Player p1 = mock(Player.class);
+        Player p2 = mock(Player.class);
+
+        assertThrows( InputMismatchException.class, () -> SUT.chooseFighter(p1, p2) );
 
         System.setIn( systemBackup );
     }
+
 }
