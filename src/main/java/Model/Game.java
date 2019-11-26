@@ -115,6 +115,8 @@ public class Game {
         return winner;
     }
 
+    // TODO: Remove this method, not used anymore (the controller is in charge of the while())
+    // TODO: Modify the test that used this method (maybe move the test from GameTest to PlayGameTest?)
     public Player play() {
         while (!gameOver) {
             round();
