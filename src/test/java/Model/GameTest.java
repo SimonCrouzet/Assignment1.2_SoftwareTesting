@@ -3,8 +3,9 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -48,7 +49,7 @@ class GameTest {
 
         SUT.setPlayer1(player1);
         SUT.setPlayer2(player2);
-        
+
         Player actual = SUT.fight();
         boolean isOneOfThePlayers = (actual.equals( SUT.getPlayer1() ) || actual.equals(SUT.getPlayer2()));
 
@@ -203,21 +204,7 @@ class GameTest {
         assertEquals(1, winner.getScore(), "Winner should now have 1 point!");
     }
 
-    @Test
-    void playUntilWeHaveAWinner() {
-        Player winner = SUT.play();
 
-        assertEquals(SUT.getWinningScoreLimit(), winner.getScore(), "The winner should reach the score limit!");
-
-        if (!SUT.getPlayer1().equals(winner))
-            assertTrue(SUT.getPlayer1().getScore()<SUT.getWinningScoreLimit(), "The looser should not reach the score" +
-                    " limit!");
-        else if (!SUT.getPlayer2().equals(winner))
-            assertTrue(SUT.getPlayer2().getScore()<SUT.getWinningScoreLimit(), "The looser should not reach the score" +
-                    " limit!");
-
-        assertTrue(SUT.getWinner().equals(SUT.getPlayer1()) || SUT.getWinner().equals(SUT.getPlayer2()));
-    }
 
     @Test
     void playersHaveFighterAtEveryRound() {

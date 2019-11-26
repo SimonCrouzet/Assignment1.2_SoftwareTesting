@@ -132,4 +132,9 @@ class PlayGameTest {
         verify(mockConsole, times(1)).printGameWinner(mockPlayerWinner);
         verify(mockConsole, times(1)).goodbyeMessage();
     }
+
+    @Test
+    void playUntilWeHaveAWinner() {
+        assertTrue(SUT.start());
+    }
 }

@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private Player player1;
@@ -10,8 +11,8 @@ public class Game {
     private Random random;
 
     public Game() {
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player(1);
+        player2 = new Player(2);
         gameOver = false;
         random = new Random();
     }
@@ -115,13 +116,6 @@ public class Game {
         return winner;
     }
 
-    // TODO: Remove this method, not used anymore (the controller is in charge of the while())
-    // TODO: Modify the test that used this method (maybe move the test from GameTest to PlayGameTest?)
-    public Player play() {
-        while (!gameOver) {
-            round();
-        }
-        return getWinner();
-    }
+
 
 }
