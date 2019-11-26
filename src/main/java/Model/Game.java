@@ -117,10 +117,19 @@ public class Game {
     }
 
     public void chooseFighter( Player p1, Player p2 ) {
+        Fighter[] fighterArray = new Fighter[3];
 
-        p1.setCurrentFighter( new Fighter(random.nextInt(50)+1,random.nextInt(200)+1) );
+        for (int i = 0; i < 3; i++) {
+            fighterArray[ i ] = new Fighter(random.nextInt(50)+1,random.nextInt(200)+1);
+        }
 
-        p2.setCurrentFighter( new Fighter(random.nextInt(50)+1,random.nextInt(200)+1) );
+        p1.setCurrentFighter( fighterArray[0] );
+
+        for (int i = 0; i < 3; i++) {
+            fighterArray[ i ] = new Fighter(random.nextInt(50)+1,random.nextInt(200)+1);
+        }
+
+        p2.setCurrentFighter( fighterArray[0] );
     }
 
 
