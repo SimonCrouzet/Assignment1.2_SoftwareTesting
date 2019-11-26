@@ -39,6 +39,13 @@ class PlayGameTest {
         when(mockGame.getWinner()).thenReturn(mockPlayerWinner);
         when(mockGame.getPlayer1()).thenReturn(mockPlayerWinner);
         when(mockGame.getPlayer2()).thenReturn(mockPlayerLoser);
+        when(mockGame.isGameOver())
+                .thenReturn(false)
+                .thenReturn(false)
+                .thenReturn(false)
+                .thenReturn(false)
+                .thenReturn(false)
+                .thenReturn(true);
 
         when(mockPlayerWinner.getPlayerNumber()).thenReturn(1);
         when(mockPlayerLoser.getPlayerNumber()).thenReturn(2);
@@ -103,8 +110,26 @@ class PlayGameTest {
 
         SUT.start();
 
-        verify(mockConsole).newRoundMessage(1);
-        verify(mockConsole).printTheFightWinner(mockPlayerWinner);
-        verify(mockConsole).printStatistics(mockGame);
+        verify(mockConsole, atLeastOnce()).newRoundMessage(1);
+        verify(mockConsole, atLeastOnce()).printTheFightWinner(mockPlayerWinner);
+        verify(mockConsole, atLeastOnce()).printStatistics(mockGame);
+    }
+
+    @Test
+    void shouldDriveTheEntireGame() {
+        mockConsole = new ConsoleMessages();
+        mockConsole = Mockito.spy(mockConsole);
+
+        SUT.setConsole(mockConsole);
+
+        SUT.start();
+
+        verify(mockConsole, times(1)).newRoundMessage(1);
+        verify(mockConsole, times(3)).printTheFightWinner(mockPlayerWinner);
+        verify(mockConsole, times(5)).printStatistics(mockGame);
+
+        verify(mockConsole, times(1)).welcomeMessage();
+        verify(mockConsole, times(1)).printGameWinner(mockPlayerWinner);
+        verify(mockConsole, times(1)).goodbyeMessage();
     }
 }
