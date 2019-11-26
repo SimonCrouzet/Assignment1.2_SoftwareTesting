@@ -24,10 +24,16 @@ public class PlayGame {
     public boolean start() {
         console.welcomeMessage();
 
-        console.newRoundMessage(1);
-        Player roundWinner = game.round();
-        console.printTheFightWinner(roundWinner);
-        console.printStatistics(game);
+        int roundCount=0;
+        while (!game.isGameOver()) {
+            roundCount++;
+            console.newRoundMessage(roundCount);
+
+            Player roundWinner = game.round();
+
+            console.printTheFightWinner(roundWinner);
+            console.printStatistics(game);
+        }
 
         Player winner = game.getWinner();
         console.printGameWinner(winner);
