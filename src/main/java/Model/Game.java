@@ -116,6 +116,9 @@ public class Game {
         return winner;
     }
 
+    public void chooseFighter( Player p1, Player p2 ) {
+
+    }
 
 
 }

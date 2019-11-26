@@ -12,9 +12,12 @@ import static org.mockito.Mockito.*;
 
 class GameTest {
     private Game SUT;
+    InputStream systemBackup = System.in;
+    ByteArrayInputStream in = new ByteArrayInputStream("1 2".getBytes());
 
     @BeforeEach
     void setUp() {
+        System.setIn( in );
         SUT = new Game();
     }
 
@@ -204,8 +207,6 @@ class GameTest {
         assertEquals(1, winner.getScore(), "Winner should now have 1 point!");
     }
 
-
-
     @Test
     void playersHaveFighterAtEveryRound() {
         while (!SUT.isGameOver()) {
@@ -230,5 +231,25 @@ class GameTest {
         }
 
         assertTrue(fighters.stream().distinct().count()>=3);
+    }
+
+    @Test
+    void chooseFighterShouldReturnNotNull() {
+        InputStream systemBackup = System.in;
+        in = new ByteArrayInputStream("1 2".getBytes());
+        System.setIn( in );
+
+        Player p1 = spy(SUT.getPlayer1());
+//                mock(Player.class);
+        Player p2 = spy( SUT.getPlayer2());
+//                mock(Player.class);
+
+        SUT.chooseFighter(p1,p2);
+
+        verify( p1, atLeastOnce() ).setCurrentFighter( any() );
+        verify( p2, atLeastOnce() ).setCurrentFighter( any() );
+
+
+        System.setIn( systemBackup );
     }
 }
