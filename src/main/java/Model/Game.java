@@ -128,7 +128,8 @@ public class Game {
         }
 
         int fighterNumber = input.nextInt();
-        p1.setCurrentFighter( fighterArray[0] );
+        fighterNumber--;
+        p1.setCurrentFighter( fighterArray[ fighterNumber ] );
 
         for (int i = 0; i < 3; i++) {
             fighterArray[ i ] = new Fighter(random.nextInt(50)+1,random.nextInt(200)+1);
