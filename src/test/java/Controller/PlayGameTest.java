@@ -137,4 +137,16 @@ class PlayGameTest {
     void playUntilWeHaveAWinner() {
         assertTrue(SUT.start());
     }
+
+    @Test
+    void shouldAskForChoosingFightersWhenNeeded() {
+        mockConsole = new ConsoleMessages();
+        mockConsole = Mockito.spy(mockConsole);
+
+        SUT.setConsole(mockConsole);
+
+        SUT.start();
+
+        verify(mockConsole, atLeastOnce()).askForFightersNumbers();
+    }
 }
