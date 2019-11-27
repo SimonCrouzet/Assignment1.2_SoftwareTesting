@@ -278,4 +278,21 @@ class GameTest {
         System.setIn( systemBackup );
     }
 
+    @Test
+    void roundShouldUseChooseFighterMethod() {
+
+        Game m = spy( SUT );
+
+        Player p1 = mock(Player.class);
+        Player p2 = mock(Player.class);
+
+        SUT.setPlayer1(p1);
+        SUT.setPlayer2(p2);
+
+        m.round();
+
+        verify( m ).chooseFighter(any(), any());
+
+        System.setIn( systemBackup );
+    }
 }
