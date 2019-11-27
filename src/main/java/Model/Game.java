@@ -136,7 +136,8 @@ public class Game {
         }
 
         fighterNumber = input.nextInt();
-        p2.setCurrentFighter( fighterArray[0] );
+        fighterNumber--;
+        p2.setCurrentFighter( fighterArray[fighterNumber] );
     }
 
 
