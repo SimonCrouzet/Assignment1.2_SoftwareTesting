@@ -14,6 +14,8 @@ public class ConsoleMessages {      // class with messages that we would print t
     }
 
     public void askForFightersNumbers() {
+        System.out.print("\nPLAYERS! It is time to choose your fighters!" +
+                "\nChoose wisely a number between 1 and 3:\n");
 
     }
 
