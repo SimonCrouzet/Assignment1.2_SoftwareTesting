@@ -116,6 +116,9 @@ public class Game {
         return winner;
     }
 
+    /*
+    * Before each round we want to choose new fighters
+    * */
     public void chooseFighter( Player p1, Player p2 ) {
         Scanner input = new Scanner( System.in );
         Fighter[] fighterArray = new Fighter[3];
@@ -125,7 +128,6 @@ public class Game {
         }
 
         int fighterNumber = input.nextInt();
-
         p1.setCurrentFighter( fighterArray[0] );
 
         for (int i = 0; i < 3; i++) {
