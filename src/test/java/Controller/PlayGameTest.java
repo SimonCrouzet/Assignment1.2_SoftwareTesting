@@ -10,8 +10,6 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
 
 class PlayGameTest {
     private PlayGame SUT;
