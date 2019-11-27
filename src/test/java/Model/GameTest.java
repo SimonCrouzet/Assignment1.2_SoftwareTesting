@@ -210,6 +210,8 @@ class GameTest {
     @Test
     void playersHaveFighterAtEveryRound() {
         while (!SUT.isGameOver()) {
+            in = new ByteArrayInputStream("1 2".getBytes());
+            System.setIn( in );
             SUT.round();
 
             assertNotNull(SUT.getPlayer1().getCurrentFighter());
@@ -222,6 +224,8 @@ class GameTest {
         List<Fighter> fighters = new ArrayList<>();
 
         while (!SUT.isGameOver()) {
+            in = new ByteArrayInputStream("1 2".getBytes());
+            System.setIn( in );
             SUT.round();
 
             if (!fighters.contains(SUT.getPlayer1().getCurrentFighter()))

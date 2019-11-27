@@ -105,6 +105,7 @@ public class Game {
      * @return the round winner
      */
     public Player round() {
+        chooseFighter(player1, player2);
         // It's not allowed to construct a Fighter with Health (or Attack) equals 0
         player1.setCurrentFighter(new Fighter(random.nextInt(50)+1,random.nextInt(200)+1));
         player2.setCurrentFighter(new Fighter(random.nextInt(50)+1,random.nextInt(200)+1));
