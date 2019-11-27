@@ -10,8 +10,6 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
 
 class PlayGameTest {
     private PlayGame SUT;
@@ -131,5 +129,22 @@ class PlayGameTest {
         verify(mockConsole, times(1)).welcomeMessage();
         verify(mockConsole, times(1)).printGameWinner(mockPlayerWinner);
         verify(mockConsole, times(1)).goodbyeMessage();
+    }
+
+    @Test
+    void playUntilWeHaveAWinner() {
+        assertTrue(SUT.start());
+    }
+
+    @Test
+    void shouldAskForChoosingFightersWhenNeeded() {
+        mockConsole = new ConsoleMessages();
+        mockConsole = Mockito.spy(mockConsole);
+
+        SUT.setConsole(mockConsole);
+
+        SUT.start();
+
+        verify(mockConsole, atLeastOnce()).askForFightersNumbers();
     }
 }

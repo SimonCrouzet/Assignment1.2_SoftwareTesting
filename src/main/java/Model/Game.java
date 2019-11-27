@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private Player player1;
@@ -10,8 +11,8 @@ public class Game {
     private Random random;
 
     public Game() {
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player(1);
+        player2 = new Player(2);
         gameOver = false;
         random = new Random();
     }
@@ -104,9 +105,8 @@ public class Game {
      * @return the round winner
      */
     public Player round() {
+        chooseFighter(player1, player2);
         // It's not allowed to construct a Fighter with Health (or Attack) equals 0
-        player1.setCurrentFighter(new Fighter(random.nextInt(50)+1,random.nextInt(200)+1));
-        player2.setCurrentFighter(new Fighter(random.nextInt(50)+1,random.nextInt(200)+1));
 
         Player winner = fight();
 
@@ -115,13 +115,29 @@ public class Game {
         return winner;
     }
 
-    // TODO: Remove this method, not used anymore (the controller is in charge of the while())
-    // TODO: Modify the test that used this method (maybe move the test from GameTest to PlayGameTest?)
-    public Player play() {
-        while (!gameOver) {
-            round();
+    /*
+    * Before each round we want to choose new fighters
+    * */
+    public void chooseFighter( Player p1, Player p2 ) {
+        Scanner input = new Scanner( System.in );
+        Fighter[] fighterArray = new Fighter[3];
+
+        for (int i = 0; i < 3; i++) {
+            fighterArray[ i ] = new Fighter(random.nextInt(50)+1,random.nextInt(200)+1);
         }
-        return getWinner();
+
+        int fighterNumber = input.nextInt();
+        fighterNumber--;
+        p1.setCurrentFighter( fighterArray[ fighterNumber ] );
+
+        for (int i = 0; i < 3; i++) {
+            fighterArray[ i ] = new Fighter(random.nextInt(50)+1,random.nextInt(200)+1);
+        }
+
+        fighterNumber = input.nextInt();
+        fighterNumber--;
+        p2.setCurrentFighter( fighterArray[fighterNumber] );
     }
+
 
 }

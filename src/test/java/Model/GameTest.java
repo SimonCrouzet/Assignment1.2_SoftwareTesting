@@ -3,17 +3,21 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class GameTest {
     private Game SUT;
+    InputStream systemBackup = System.in;
+    ByteArrayInputStream in = new ByteArrayInputStream("1 2".getBytes());
 
     @BeforeEach
     void setUp() {
+        System.setIn( in );
         SUT = new Game();
     }
 
@@ -48,7 +52,7 @@ class GameTest {
 
         SUT.setPlayer1(player1);
         SUT.setPlayer2(player2);
-        
+
         Player actual = SUT.fight();
         boolean isOneOfThePlayers = (actual.equals( SUT.getPlayer1() ) || actual.equals(SUT.getPlayer2()));
 
@@ -204,24 +208,10 @@ class GameTest {
     }
 
     @Test
-    void playUntilWeHaveAWinner() {
-        Player winner = SUT.play();
-
-        assertEquals(SUT.getWinningScoreLimit(), winner.getScore(), "The winner should reach the score limit!");
-
-        if (!SUT.getPlayer1().equals(winner))
-            assertTrue(SUT.getPlayer1().getScore()<SUT.getWinningScoreLimit(), "The looser should not reach the score" +
-                    " limit!");
-        else if (!SUT.getPlayer2().equals(winner))
-            assertTrue(SUT.getPlayer2().getScore()<SUT.getWinningScoreLimit(), "The looser should not reach the score" +
-                    " limit!");
-
-        assertTrue(SUT.getWinner().equals(SUT.getPlayer1()) || SUT.getWinner().equals(SUT.getPlayer2()));
-    }
-
-    @Test
     void playersHaveFighterAtEveryRound() {
         while (!SUT.isGameOver()) {
+            in = new ByteArrayInputStream("1 2".getBytes());
+            System.setIn( in );
             SUT.round();
 
             assertNotNull(SUT.getPlayer1().getCurrentFighter());
@@ -234,6 +224,8 @@ class GameTest {
         List<Fighter> fighters = new ArrayList<>();
 
         while (!SUT.isGameOver()) {
+            in = new ByteArrayInputStream("1 2".getBytes());
+            System.setIn( in );
             SUT.round();
 
             if (!fighters.contains(SUT.getPlayer1().getCurrentFighter()))
@@ -243,5 +235,68 @@ class GameTest {
         }
 
         assertTrue(fighters.stream().distinct().count()>=3);
+    }
+
+    @Test
+    void chooseFighterShouldSetPlayersFighters() {
+        InputStream systemBackup = System.in;
+        in = new ByteArrayInputStream("1 2".getBytes());
+        System.setIn( in );
+
+        Player p1 = spy(SUT.getPlayer1());
+        Player p2 = spy( SUT.getPlayer2());
+
+        SUT.chooseFighter(p1,p2);
+
+        verify( p1, atLeastOnce() ).setCurrentFighter( any() );
+        verify( p2, atLeastOnce() ).setCurrentFighter( any() );
+
+        System.setIn( systemBackup );
+    }
+
+    @Test
+    void chooseFighterShouldChooseANumber() {
+        InputStream systemBackup = System.in;
+        in = new ByteArrayInputStream("a".getBytes());
+        System.setIn( in );
+
+        Player p1 = mock(Player.class);
+        Player p2 = mock(Player.class);
+
+        assertThrows( InputMismatchException.class, () -> SUT.chooseFighter(p1, p2) );
+
+        System.setIn( systemBackup );
+    }
+
+    @Test
+    void chooseFighterShouldChooseFrom1To3 () {
+        InputStream systemBackup = System.in;
+        ByteArrayInputStream in = new ByteArrayInputStream("0 44".getBytes());
+        System.setIn( in );
+
+        Player p1 = mock(Player.class);
+        Player p2 = mock(Player.class);
+
+        assertThrows( ArrayIndexOutOfBoundsException.class, () -> SUT.chooseFighter(p1, p2) );
+
+        System.setIn( systemBackup );
+    }
+
+    @Test
+    void roundShouldUseChooseFighterMethod() {
+
+        Game m = spy( SUT );
+
+        Player p1 = mock(Player.class);
+        Player p2 = mock(Player.class);
+
+        SUT.setPlayer1(p1);
+        SUT.setPlayer2(p2);
+
+        m.round();
+
+        verify( m ).chooseFighter(any(), any());
+
+        System.setIn( systemBackup );
     }
 }
