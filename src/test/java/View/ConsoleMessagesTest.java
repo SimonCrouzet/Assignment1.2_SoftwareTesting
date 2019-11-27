@@ -265,4 +265,15 @@ class ConsoleMessagesTest {
 
         assertEquals( expected, outContent.toString() );
     }
+
+    @Test
+    void shouldAskForNumbersOfRandomFighters() {
+        outContent.reset();
+
+        SUT.askForFightersNumbers();
+        String expected = "\nPLAYERS! It is time to choose your fighters!" +
+                "\nChoose wisely a number between 1 and 3:\n";
+
+        assertEquals( expected, outContent.toString() );
+    }
 }
