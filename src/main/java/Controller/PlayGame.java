@@ -29,6 +29,7 @@ public class PlayGame {
             roundCount++;
             console.newRoundMessage(roundCount);
 
+            console.askForFightersNumbers();
             Player roundWinner = game.round();
 
             console.printTheFightWinner(roundWinner);
