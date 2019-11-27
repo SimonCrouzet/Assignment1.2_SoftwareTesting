@@ -264,4 +264,18 @@ class GameTest {
         System.setIn( systemBackup );
     }
 
+    @Test
+    void chooseFighterShouldChooseFrom1To3 () {
+        InputStream systemBackup = System.in;
+        ByteArrayInputStream in = new ByteArrayInputStream("0 44".getBytes());
+        System.setIn( in );
+
+        Player p1 = mock(Player.class);
+        Player p2 = mock(Player.class);
+
+        assertThrows( ArrayIndexOutOfBoundsException.class, () -> SUT.chooseFighter(p1, p2) );
+
+        System.setIn( systemBackup );
+    }
+
 }
